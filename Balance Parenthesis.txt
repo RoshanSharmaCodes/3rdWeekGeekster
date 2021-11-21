@@ -1,0 +1,21 @@
+function isParentheseBalanced(str){
+    var arr = [];
+    for(var i=0;i<str.length;i++){
+        if(str[i]==="("){
+            arr.push(str[i]);
+        }
+        else{
+            arr.pop()
+        }
+    }
+    if(arr.length){
+        return false;
+    }
+    else
+    {
+        return true;
+    }
+}
+
+var result = isParentheseBalanced("(()())(")
+console.log(result);

@@ -1,0 +1,106 @@
+class Node{
+    constructor(val){
+        this.val = val;
+        this.addr = null;
+    }
+}
+
+class LinkedList{
+    constructor(){
+        this.head = null;
+        this.tail = null;
+        this.length = 0;
+    }
+    
+    push(val){
+        var node = new Node(val);
+        if(!this.head){
+            this.head = node;
+            this.tail = node;
+        }else
+        {
+            this.tail.next = node;
+            this.tail = node;
+        }
+        this.length++;
+     
+    }
+    
+    
+    pop(){
+        if(!this.head){
+            return undefined;
+        }
+        else{
+            
+            var current = this.head;
+            var newtail = current;
+            while(current.next){
+                newtail = current;
+                current = current.next;
+            }
+            this.tail = newtail;
+            this.tail.next = null;
+            this.length--;
+            if(this.length===0){
+                this.head = null;
+                this.tail = null;
+            }
+        }
+        return current;
+    }
+    
+    print(){
+        var arr= [];
+        var curr = this.head;
+        while(curr){
+            arr.push(curr.val);
+            curr = curr.next;
+        }
+        console.log(arr);
+    }
+    
+}
+
+function isPalindrome(head){
+    var arr1=[];
+    var arr2 = [];
+    var node = head;
+    var i=0;
+    while(node){
+        arr1.push(node.val);
+        node = node.next;
+    }
+    node = head;
+    var prev = null;
+    var next = null;
+    while(node){
+        next = node.next;
+        node.next = prev;
+        prev = node;
+        node = next;
+    }
+    while(prev){
+        arr2.push(prev.val);
+        prev = prev.next;
+    }
+    while(i<arr1.length){
+        if(arr1[i]!==arr2[i]){
+            return false;
+        }
+        i++
+    }
+    return true;
+}
+
+
+var link = new LinkedList();
+link.push(3);
+link.push(1);
+link.push(1);
+link.push(2);
+link.push(1)
+link.push(1);
+link.push(3);
+var result = isPalindrome(link.head)
+console.log(result)

@@ -1,0 +1,64 @@
+class Node{
+    constructor(val){
+        this.value = val;
+        this.next = null;
+    }
+}
+
+class LinkedList{
+    constructor(){
+        this.head = null;
+        this.tail = null;
+    }
+    
+    
+    insert(val){
+        var node = new Node(val);
+        if(!this.head){
+            this.head = node;
+            this.tail = node;
+        }
+        this.tail.next = node;
+        this.tail = node;
+    }
+    
+    print(){
+        var arr = [];
+        var curr = this.head;
+        while(curr){
+            arr.push(curr.value)
+            curr = curr.next;
+        }
+        console.log(arr);
+    }
+    
+    deleteAt(n){
+        var node = this.head;
+        var prev = null;
+        var count = 1;
+        while(count<n){
+            prev = node;
+            node = node.next;
+            count++;
+        }
+        prev.next = node.next;
+    }
+}
+
+
+var link = new LinkedList();
+link.insert(1);
+link.insert(2)
+link.insert(3)
+link.insert(4)
+link.insert(5)
+link.insert(6)
+link.insert(7)
+link.insert(8)
+link.print()
+link.deleteAt(3);
+link.deleteAt(5);
+link.deleteAt(6);
+link.deleteAt(3);
+link.print();
+

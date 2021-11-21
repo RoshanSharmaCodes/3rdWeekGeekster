@@ -1,0 +1,11 @@
+var arr = [];
+var rev = "";
+var str = "roshan";
+for(var i=0;i<str.length;i++){
+    arr.push(str[i]);
+}
+for(var j=0;j<str.length;j++){
+    rev = rev + arr.pop();
+}
+
+console.log(rev)

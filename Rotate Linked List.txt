@@ -1,0 +1,76 @@
+class Node{
+    constructor(val){
+        this.value = val;
+        this.next = null;
+    }
+}
+
+class LinkedList{
+    constructor(){
+        this.head = null;
+        this.tail = null;
+    }
+    
+    
+    insert(val){
+        var node = new Node(val);
+        if(!this.head){
+            this.head = node;
+            this.tail = node;
+        }
+        this.tail.next = node;
+        this.tail = node;
+    }
+    
+    print(){
+        var arr = [];
+        var curr = this.head;
+        while(curr){
+            arr.push(curr.value)
+            curr = curr.next;
+        }
+        console.log(arr);
+    }
+}
+
+function Rotate(head,n){
+    var i=0,j=0,l=0;
+    var node = head;
+    while(node.next){
+        j++;
+        node = node.next;
+    }
+    i = j-n;
+    node = head;
+    while(i!==l){
+        node = node.next;
+        l++;
+    }
+    var temp = head;
+    head = node.next;
+    node.next = null;
+    node = head;
+    while(node.next){
+        node = node.next;
+    }
+    node.next = temp;
+   
+    return head;
+}
+
+
+var link1 = new LinkedList();
+var link2 = new LinkedList();
+link1.insert(1);
+link1.insert(2)
+link1.insert(3)
+link1.insert(4)
+link1.insert(5)
+link1.insert(6)
+link1.insert(7)
+link1.insert(8)
+link1.insert(9)
+link1.print();
+link1.head = Rotate(link1.head,4);
+link1.print()
+
